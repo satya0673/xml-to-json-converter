@@ -1,63 +1,17 @@
-//
-//package com.example.xmltojson.service;
-//
-//import com.fasterxml.jackson.databind.JsonNode;
-//import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-//import org.springframework.stereotype.Service;
-//
-//import java.io.File;
-//import java.io.IOException;
-//
-//@Service
-//public class XmlToJsonService {
-//
-//    private static final String OUTPUT_DIRECTORY = "output/";
-//
-//    public String convertXmlToJson(String xmlFilePath) {
-//        try {
-//            // Ensure output directory exists
-//            File dir = new File(OUTPUT_DIRECTORY);
-//            if (!dir.exists()) {
-//                dir.mkdirs();
-//            }
-//
-//            // Read XML file
-//            File xFile=new File(xmlFilePath);
-//            File xmlFile = new File(xmlFilePath);
-//            XmlMapper xmlMapper = new XmlMapper();
-//            
-//            JsonNode jsonNode = xmlMapper.readTree(xmlFile);
-//
-//            // Convert to JSON format
-//            ObjectMapper jsonMapper = new ObjectMapper();
-//            String jsonContent = jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
-//
-//            // Define JSON file path
-//            String jsonFileName = xmlFile.getName().replace(".xml", ".json");
-//            String jsonFilePath = OUTPUT_DIRECTORY + jsonFileName;
-//
-//            // Write JSON file
-//            jsonMapper.writeValue(new File(jsonFilePath), jsonNode);
-//
-//            System.out.println("✅ JSON file saved at: " + new File(jsonFilePath).getAbsolutePath());
-//            return new File(jsonFilePath).getAbsolutePath(); // Return full path
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return "Error converting XML to JSON!";
-//        }
-//    }
-//}
-//
-package com.example.xmltojson.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.springframework.stereotype.Service;
+package com.example.xmltojson.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 @Service
 public class XmlToJsonService {
